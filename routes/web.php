@@ -45,7 +45,9 @@ Route::get('/edit-profile/{id}', [ProfileController::class, 'edit'])->name('edit
 Route::put('/update-profile/{id}', [ProfileController::class, 'update'])->name('update-profile')->middleware('auth');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 
-Route::get('/dashboard',function(){return view('Admin.dashboard');});
+
+
+Route::get('/dashboard',function(){return view('Admin.dashboard');})->middleware('auth','isAdmin');
 Route::get('/dashboard/user-manage',[ManageController::class, 'index'])->name('index-user');
 Route::get('/dashboard/post-manage',[ManageController::class, 'indexPost'])->name('index-post');
 
