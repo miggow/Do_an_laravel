@@ -27,6 +27,6 @@ class AdminMiddleware
         } else {
             return redirect('/login')->with('message', 'Cần phải đăng nhập');
         }
-        return $next($request);
+        
     }
 }

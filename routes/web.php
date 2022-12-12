@@ -6,6 +6,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ManageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,11 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/', [PostController::class, 'index'])->name('home')->middleware('auth') ;
 
 Route::get('/profile', function () {
     return view('profile');
-})->name('profile')->middleware('auth');
+})->name('profile')->middleware('auth') ;
 
 
 Route::get('/post-detail/{id}', [PostController::class, 'show'])->name('show')->middleware('auth');
@@ -48,8 +49,8 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 
 
 Route::get('/dashboard',function(){return view('Admin.dashboard');})->middleware('auth','isAdmin');
-Route::get('/dashboard/user-manage',[ManageController::class, 'index'])->name('index-user');
-Route::get('/dashboard/post-manage',[ManageController::class, 'indexPost'])->name('index-post');
+Route::get('/dashboard/user-manage',[ManageController::class, 'indexUser'])->name('index-user')->middleware('auth','isAdmin');
+Route::get('/dashboard/post-manage',[ManageController::class, 'indexPost'])->name('index-post')->middleware('auth','isAdmin');
 
 
 Route::post('/login', [AuthController::class, 'doLogin'])->name('do-login');
