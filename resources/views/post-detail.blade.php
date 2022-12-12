@@ -12,12 +12,15 @@
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
 
                 <div class="tm-bg-gray tm-video-details">
+                    @if (Auth::user()->id == $post->user_id)
                     <div style="margin-left:60%; "><a
-                            href="{{ route('edit', $post->id) }} "style="margin-right:30px;font-size: 30px;">Sửa</a>
-                        <a href="{{ route('delete', $post->id) }}" style="font-size: 30px;">xóa</a>
-                    </div>
+                        href="{{ route('edit', $post->id) }} "style="margin-right:30px;font-size: 30px;">Sửa</a>
+                    <a href="{{ route('delete', $post->id) }}" style="font-size: 30px;">xóa</a>
+                </div>
+                    @endif
+                    
 
-                    <h2 class="tm-text-gray-dark mb-3">Bình luận:</h2>
+                    <h2 class="tm-text-gray-dark mb-3">Nội dung:</h2>
                     <h4>{{ $post->content }}</h4>
                     <hr>
                     <div>
@@ -39,10 +42,10 @@
                                         {{ $comment->created_at }}
 
                                     </p>
-                                    <p>{{ $comment->comment }}</p>
+                                    <h3>{{ $comment->comment }}</h3>
 
                                     @if (Auth::user()->id == $comment->user->id)
-                                        <a href="" class="btn btn-primary btn-sm me-2">Xóa</a>
+                                        <a href="{{ route('delete-comment', ['id' => $comment->id]) }}" class="btn btn-primary btn-sm me-2">Xóa</a>
                                     @endif
                                 </div>
                             </div>

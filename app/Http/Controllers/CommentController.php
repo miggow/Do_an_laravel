@@ -25,12 +25,13 @@ class CommentController extends Controller
                 'user_id' =>Auth::user()->id,
                 'comment' => $request->comment,
             ]);
-            redirect()->back();
+            return redirect('post-detail/'.$post->id);
         } else {
-            redirect()->back();
+            return redirect()->back();
         }
         
     }
+    
     public function remove($id)
     {
         $comment = Comment::find($id);

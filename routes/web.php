@@ -36,7 +36,7 @@ Route::put('/update/{id}', [PostController::class,'update'])->name('update');
 Route::get('/delete/{id}', [PostController::class,'remove'])->name('delete');
 
 Route::post('/comment',[CommentController::class,'store'])->name('create-comment');
-
+Route::get('/delete/comment/{id}', [CommentController::class,'remove'])->name('delete-comment');
 
 
 Route::get('/profile/{id}', [ProfileController::class,'show'])->name('show-profile');

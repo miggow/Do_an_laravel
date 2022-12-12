@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -25,7 +26,7 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->phone = $request->phone;
         $user->image = 'storage/' . $request->file('image')->store('img', 'public');
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->save();
         return redirect()->route('profile');
     }

@@ -28,13 +28,13 @@
             <figure class="effect-ming tm-video-item">
                 <img src="{{ asset($post->image) }}" alt="Image" class="img-fluid"  >
                 <figcaption class="d-flex align-items-center justify-content-center">
-                    <h2>Clocks</h2>
+                    <h2>Read More>></h2>
                     <a href="/post-detail/{{ $post->id }}">View more</a>
                 </figcaption>                    
             </figure>
             <div class="d-flex justify-content-between tm-text-gray">
                 <span class="tm-text-gray-light">{{ $post->created_at }}</span>
-                <span>9,906 views</span>
+                
             </div>
         </div>
         @endforeach
