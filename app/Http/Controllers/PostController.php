@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class PostController extends Controller
 
 {
@@ -16,7 +18,8 @@ class PostController extends Controller
     }
     public function create()
     {
-        return view('create-post');
+        $category = Category::all();
+        return view('create-post', compact('category'));
     }
     public function store(Request $request)
     {
@@ -37,29 +40,31 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->image = $imagePath;
 
-        
+
         $post->save();
-        
+
         return redirect()->route('home')->with('status', 'Tạo bài đăng thành công');
     }
-    public function show($id){   
+    public function show($id)
+    {
         $post = Post::find($id);
         return view('post-detail', compact('post'));
     }
     public function edit($id)
-    { $post = Post::find($id);
-        return view('edit',compact('post'));
+    {
+        $post = Post::find($id);
+        return view('edit', compact('post'));
     }
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
 
-          $post->title = $request->input('title');
-          $post->content =$request->input('content');
-          $post->image = 'storage/' . $request->file('image')->store('postsImages', 'public');
-  
-          $post->update();
-          return redirect()->route('home');
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->image = 'storage/' . $request->file('image')->store('postsImages', 'public');
+
+        $post->update();
+        return redirect()->route('home');
     }
     public function remove($id)
     {

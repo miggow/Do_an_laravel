@@ -24,6 +24,7 @@
                                 <th>Tài khoản Email</th>
                                 <th>Tạo lúc</th>
                                 <th>Chức năng</th>
+                                <th>chức vụ</th>
                             </tr>
                         </thead>
                         @foreach ($user as $user)
@@ -37,6 +38,13 @@
                                 <td>
                                     <button >Edit</button>
                                     <button class="delete">Delete</button>
+                                </td>
+                                <td>
+                                    @if ($user->role == '1')
+                                        Admin
+                                    @else
+                                        Người dùng
+                                    @endif
                                 </td>
                             </tr>
                             

@@ -41,7 +41,11 @@ https://templatemo.com/tm-556-catalog-z
                 <li class="nav-item">
                     <a class="nav-link nav-link-2" href="{{ asset('create-post') }}">Tạo bài đăng</a>
                 </li>
-                
+                @if (Auth::user()->role == '1')
+                <li class="nav-item">
+                    <a class="nav-link nav-link-2" href="{{ asset('dashboard') }}">Dashboard</a>
+                </li>
+                @endif
                 <img class="img-custom" src="{{ asset(Auth::user()->image) }}" alt="" >
                 <li class="nav-item"><a class="nav-link nav-link-2" href="/profile/{{ Auth::user()->id }}">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</a></li>
                 <li class="nav-item">

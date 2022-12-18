@@ -10,6 +10,10 @@ class ManageController extends Controller
 {
     public function index()
     {
+        return view('Admin.dashboard');
+    }
+    public function indexUser()
+    {
         $user = User::all();
         return view('Admin.user-manage',compact('user'));
     }
