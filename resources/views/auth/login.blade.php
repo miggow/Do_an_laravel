@@ -13,6 +13,9 @@
     <!-- partial:index.partial.html -->
     <form class="login" action="{{ route('login') }}"  method="POST">
         @csrf
+        @if (session('success'))
+            <h1 style="text-align: center; color: rgb(24, 104, 24)">Đăng ký thành công</h1>
+        @endif
         <h1 style="text-align: center; ">Đăng nhập</h1>
         <input type="text" name="email" placeholder="Tài khoản email">
         <input type="password" name="password" placeholder="Mật khẩu">

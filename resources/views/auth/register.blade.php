@@ -15,14 +15,35 @@
         @csrf
         <h1 style="text-align: center; ">Đăng ký tài khoản</h1>
         <input type="text" name="name" placeholder="Họ và tên">
-        <input type="text" name="phone" placeholder="Số điện thoại">
+        @error('name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        <input type="number" name="phone" placeholder="Số điện thoại">
+        @error('phone')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
         <input type="text" name="email" placeholder="Tài khoản email">
+        @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
         <input type="password" name="password" placeholder="Mật khẩu">
-        <button ><a href="{{ route('register') }}">Đăng ký</a></button>
-        <h4>Bạn đã có tài khoản ? <a href="{{ route('login') }}" style="color: rgba(29, 161, 238, 0.753);"> Đăng nhập</a></h4>
-        
-        
-        
+        @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        <button><a href="{{ route('register') }}">Đăng ký</a></button>
+        <h4>Bạn đã có tài khoản ? <a href="{{ route('login') }}" style="color: rgba(29, 161, 238, 0.753);"> Đăng
+                nhập</a></h4>
+
+
+
     </form>
 
 

@@ -2,7 +2,11 @@ body {
     background-color: #f45b69;
     font-family: "Asap", sans-serif;
   }
-  
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
   .login {
     overflow: hidden;
     background-color: white;

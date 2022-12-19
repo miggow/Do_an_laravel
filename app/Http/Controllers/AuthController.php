@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    
+
     public function login()
     {
         return view('auth.login');
@@ -17,9 +17,8 @@ class AuthController extends Controller
     public function doLogin(Request $request)
     {
         // dd($request->input());  
-        
-        if(Auth::attempt([ "email" => $request->email, "password" => $request->password, 'status'=>0]))
-        {
+
+        if (Auth::attempt(["email" => $request->email, "password" => $request->password, 'status' => 0])) {
             return redirect()->route('home');
         }
         return redirect()->route('login');
@@ -33,15 +32,22 @@ class AuthController extends Controller
     public function doRegister(Request $request)
     {
         // dd($request->input());
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required | number',
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
         User::create([
-            'name' => $request->name,   
+            'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Đăng ký thành công');
     }
-    public function doLogout(){
+    public function doLogout()
+    {
         Auth::logout();
         return redirect()->route('login');
     }

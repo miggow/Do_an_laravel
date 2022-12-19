@@ -94,19 +94,24 @@
 
         <div class="row mb-3 tm-gallery">
             @foreach ($posts as $item)
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5" style="width: 15%;">
-                    <figure class="effect-ming tm-video-item">
-                        <img src="{{ asset($item->image) }}" alt="Image" class="img-fluid">
-                        <figcaption class="d-flex align-items-center justify-content-center">
+            @if ($item->status =='0')
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5" style="width: 15%;">
+                <figure class="effect-ming tm-video-item">
+                    <img src="{{ asset($item->image) }}" alt="Image" class="img-fluid">
+                    <figcaption class="d-flex align-items-center justify-content-center">
 
-                            <a href="/post-detail/{{ $item->id }}">View more</a>
-                        </figcaption>
-                    </figure>
-                    <div class="d-flex justify-content-between tm-text-gray">
-                        <span class="tm-text-gray-light">{{ $item->created_at }}</span>
-                        <b>{{ $item->user->name }}</b>
-                    </div>
+                        <a href="/post-detail/{{ $item->id }}">View more</a>
+                    </figcaption>
+                </figure>
+                <div class="d-flex justify-content-between tm-text-gray">
+                    <span class="tm-text-gray-light">{{ $item->created_at }}</span>
+                    <b>{{ $item->user->name }}</b>
                 </div>
+            </div>
+            @else
+                @continue
+            @endif
+                
             @endforeach
 
 
