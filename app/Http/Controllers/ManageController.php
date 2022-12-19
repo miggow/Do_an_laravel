@@ -15,12 +15,12 @@ class ManageController extends Controller
     public function indexUser()
     {
         $user = User::all();
-        return view('Admin.user-manage',compact('user'));
+        return view('Admin.user-manage', compact('user'));
     }
     public function indexPost()
     {
         $post = Post::all();
-        return view('Admin.post-manage',compact('post'));
+        return view('Admin.post-manage', compact('post'));
     }
     public function blockUser($id)
     {
@@ -52,6 +52,20 @@ class ManageController extends Controller
 
         $user->role = 0;
         $user->update();
+        return redirect()->back();
+    }
+    public function blockPost($id)
+    {
+        $post = Post::find($id);
+        $post->status = 1;
+        $post->update();
+        return redirect()->back();
+    }
+    public function openPost($id)
+    {
+        $post = Post::find($id);
+        $post->status = 0;
+        $post->update();
         return redirect()->back();
     }
 }

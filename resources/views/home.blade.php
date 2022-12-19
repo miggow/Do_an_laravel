@@ -24,7 +24,8 @@
     </div>
     <div class="row tm-mb-90 tm-gallery">
         @foreach ($post as $post)
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+        @if ($post->status == '0')
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5" style="width: 20%;">
             <figure class="effect-ming tm-video-item">
                 <img src="{{ asset($post->image) }}" alt="Image" class="img-fluid"  >
                 <figcaption class="d-flex align-items-center justify-content-center">
@@ -37,6 +38,10 @@
                 <b>{{ $post->user->name }}</b>
             </div>
         </div>
+        @else
+        @continue
+        @endif
+        
         @endforeach
         
                

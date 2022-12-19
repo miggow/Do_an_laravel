@@ -36,8 +36,19 @@
 
                                 <td>{{ $post->created_at }}</td>
                                 <td>
-                                    <button >Edit</button>
-                                    <button class="delete">Delete</button>
+                                    <a href="{{ route('open.post', $post->id) }}"><input class="btn btn-primary"
+                                        type="submit" value="Mở bài viết"></a>
+                                        <hr>
+                                    <a href="{{ route('block.post', $post->id) }}"><input class="btn btn-danger"
+                                        type="submit" value="Khóa bài viết"></a>
+                                    
+                                </td>
+                                <td>
+                                    @if ($post->status == '0')
+                                        Hoạt động
+                                    @else
+                                        Ngưng hoạt động
+                                    @endif
                                 </td>
                             </tr>
                             
