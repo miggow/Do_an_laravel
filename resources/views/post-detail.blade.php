@@ -4,6 +4,7 @@
 
         <div class="row mb-4">
             <h2 class="col-12 tm-text-primary" style="margin-left: 5%">Tiêu đề: {{ $post->title }} </h2>
+            <i class="col-12 tm-text-primary" style="margin-left: 5%">Danh mục: {{ $post->category->name }}</i>
         </div>
         <div class="row tm-mb-90">
             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
@@ -22,6 +23,10 @@
 
                     <h2 class="tm-text-gray-dark mb-3">Nội dung:</h2>
                     <h4>{{ $post->content }}</h4>
+                    <p class="mb-0">
+                       liên hệ: {{ $post->user->phone }}
+
+                    </p>
                     <hr>
                     <div>
                         <h2 class="tm-text-gray-dark mb-3">Bình luận:</h2>
@@ -42,6 +47,7 @@
                                         {{ $comment->created_at }}
 
                                     </p>
+                                    
                                     <h3>{{ $comment->comment }}</h3>
 
                                     @if (Auth::user()->id == $comment->user->id)

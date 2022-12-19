@@ -13,6 +13,15 @@
             <input type="text" class="form-control" id="content" name="content">
         </div>
         <div class="mb-3">
+            <label for="content" class="form-label">Loại đồ vật</label>
+            <select style="width: 60%;" name="category_id" id="">
+                <option selected disabled >Chọn loại danh mục</option>
+                @foreach ($category as $category)
+                    <option value="2">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
             <div class="mb-3">
                 <label for="formFile" class="form-label">Hình ảnh chi tiết</label>
                 <input class="form-control" type="file" id="image" name="image">

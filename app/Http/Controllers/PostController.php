@@ -18,6 +18,7 @@ class PostController extends Controller
     }
     public function create()
     {
+        
         $category = Category::all();
         return view('create-post', compact('category'));
     }
@@ -36,6 +37,7 @@ class PostController extends Controller
 
         $post = new Post();
         $post->title = $request->title;
+        $post->category_id = $request->category_id;
         $post->user_id = Auth::user()->id;
         $post->content = $request->content;
         $post->image = $imagePath;
@@ -52,8 +54,9 @@ class PostController extends Controller
     }
     public function edit($id)
     {
+        $category = Category::all();
         $post = Post::find($id);
-        return view('edit', compact('post'));
+        return view('edit', compact('post','category'));
     }
     public function update(Request $request, $id)
     {

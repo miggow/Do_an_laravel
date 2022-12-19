@@ -11,6 +11,15 @@
             <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}">
         </div>
         <div class="mb-3">
+            <label for="content" class="form-label">Loại đồ vật</label>
+            <select style="width: 60%;" name="category_id" id="">
+                <option selected disabled >Chọn loại danh mục</option>
+                @foreach ($category as $category)
+                    <option value="2">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="content" class="form-label">Nội dung bài đăng</label>
             <input type="text" class="form-control" id="content" name="content" value="{{ $post->content }}">
         </div>

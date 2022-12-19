@@ -43,7 +43,7 @@ https://templatemo.com/tm-556-catalog-z
                 </li>
                 @if (Auth::user()->role == '1')
                 <li class="nav-item">
-                    <a class="nav-link nav-link-2" href="{{ asset('dashboard') }}">Dashboard</a>
+                    <a class="nav-link nav-link-2" href="{{ url('/dashboard/user-manage') }}">Dashboard</a>
                 </li>
                 @endif
                 <img class="img-custom" src="{{ asset(Auth::user()->image) }}" alt="" >

@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label"></label>
-                                    <input class="form-control" type="file" id="image" name="image">
+                                    <input class="form-control" type="file" id="image" name="image" value="{{ Auth::user()->image }}">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Lưu</button>
                             </form>
