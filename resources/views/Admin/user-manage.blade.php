@@ -58,6 +58,13 @@
                                         Ngưng hoạt động
                                     @endif
                                 </td>
+                                <td>
+                                    <a href="{{ route('chuyen.user', $user->id) }}"><input class="btn btn-primary"
+                                    type="submit" value="chuyển thành admin"></a>
+                                    <hr>
+                                    <a href="{{ route('chuyen.admin', $user->id) }}"><input class="btn btn-danger"
+                                        type="submit" value="giáng cấp chức vụ"></a>
+                                </td>
                             </tr>
                             
                         </tbody>

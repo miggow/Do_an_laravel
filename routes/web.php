@@ -54,6 +54,8 @@ Route::get('/dashboard/user-manage',[ManageController::class, 'indexUser'])->nam
 Route::get('/dashboard/post-manage',[ManageController::class, 'indexPost'])->name('index-post')->middleware('auth','isAdmin');
 Route::get('/dashboard/block/{id}',[ManageController::class,'blockUser'])->name('block.user')->middleware('auth','isAdmin');
 Route::get('/dashboard/open/{id}',[ManageController::class,'openUser'])->name('open.user')->middleware('auth','isAdmin');
+Route::get('/dashboard/admin/{id}',[ManageController::class,'chuyenDoiAdmin'])->name('chuyen.user')->middleware('auth','isAdmin');
+Route::get('/dashboard/user/{id}',[ManageController::class,'chuyenDoiUser'])->name('chuyen.admin')->middleware('auth','isAdmin');
 
 Route::get('/categories',[CategoryController::class,'index'])->name('category.index')->middleware('auth','isAdmin');
 Route::get('/categories/create-post', [CategoryController::class, 'create'])->name('category.create');

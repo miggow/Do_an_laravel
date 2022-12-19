@@ -1,4 +1,5 @@
 @extends('layout')
+
 @section('main')
     <div class="container-fluid tm-container-content tm-mt-60">
 
@@ -14,17 +15,17 @@
 
                 <div class="tm-bg-gray tm-video-details">
                     @if (Auth::user()->id == $post->user_id)
-                    <div style="margin-left:60%; "><a
-                        href="{{ route('edit', $post->id) }} "style="margin-right:30px;font-size: 30px;">Sửa</a>
-                    <a href="{{ route('delete', $post->id) }}" style="font-size: 30px;">xóa</a>
-                </div>
+                        <div style="margin-left:60%; "><a
+                                href="{{ route('edit', $post->id) }} "style="margin-right:30px;font-size: 30px;">Sửa</a>
+                            <a href="{{ route('delete', $post->id) }}" style="font-size: 30px;">xóa</a>
+                        </div>
                     @endif
-                    
+
 
                     <h2 class="tm-text-gray-dark mb-3">Nội dung:</h2>
                     <h4>{{ $post->content }}</h4>
                     <p class="mb-0">
-                       liên hệ: {{ $post->user->phone }}
+                        liên hệ: {{ $post->user->phone }}
 
                     </p>
                     <hr>
@@ -47,11 +48,12 @@
                                         {{ $comment->created_at }}
 
                                     </p>
-                                    
+
                                     <h3>{{ $comment->comment }}</h3>
 
                                     @if (Auth::user()->id == $comment->user->id)
-                                        <a href="{{ route('delete-comment', ['id' => $comment->id]) }}" class="btn btn-primary btn-sm me-2">Xóa</a>
+                                        <a href="{{ route('delete-comment', ['id' => $comment->id]) }}"
+                                            class="btn btn-primary btn-sm me-2">Xóa</a>
                                     @endif
                                 </div>
                             </div>
@@ -84,116 +86,30 @@
         </div>
 
 
-        {{-- <div class="row mb-4">
-        <h2 class="col-12 tm-text-primary">
-            Related Photos
-        </h2>
-    </div>
-    <div class="row mb-3 tm-gallery">
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-            <figure class="effect-ming tm-video-item">
-                <img src="img/img-01.jpg" alt="Image" class="img-fluid">
-                <figcaption class="d-flex align-items-center justify-content-center">
-                    <h2>Hangers</h2>
-                    <a href="#">View more</a>
-                </figcaption>                    
-            </figure>
-            <div class="d-flex justify-content-between tm-text-gray">
-                <span class="tm-text-gray-light">16 Oct 2020</span>
-                <span>12,460 views</span>
-            </div>
+        <div class="row mb-4">
+            <h2 class="col-12 tm-text-primary">
+                Related Photos
+            </h2>
         </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-            <figure class="effect-ming tm-video-item">
-                <img src="img/img-02.jpg" alt="Image" class="img-fluid">
-                <figcaption class="d-flex align-items-center justify-content-center">
-                    <h2>Perfumes</h2>
-                    <a href="#">View more</a>
-                </figcaption>                    
-            </figure>
-            <div class="d-flex justify-content-between tm-text-gray">
-                <span class="tm-text-gray-light">12 Oct 2020</span>
-                <span>11,402 views</span>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-            <figure class="effect-ming tm-video-item">
-                <img src="img/img-03.jpg" alt="Image" class="img-fluid">
-                <figcaption class="d-flex align-items-center justify-content-center">
-                    <h2>Clocks</h2>
-                    <a href="#">View more</a>
-                </figcaption>                    
-            </figure>
-            <div class="d-flex justify-content-between tm-text-gray">
-                <span class="tm-text-gray-light">8 Oct 2020</span>
-                <span>9,906 views</span>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-            <figure class="effect-ming tm-video-item">
-                <img src="img/img-04.jpg" alt="Image" class="img-fluid">
-                <figcaption class="d-flex align-items-center justify-content-center">
-                    <h2>Plants</h2>
-                    <a href="#">View more</a>
-                </figcaption>                    
-            </figure>
-            <div class="d-flex justify-content-between tm-text-gray">
-                <span class="tm-text-gray-light">6 Oct 2020</span>
-                <span>16,100 views</span>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-            <figure class="effect-ming tm-video-item">
-                <img src="img/img-05.jpg" alt="Image" class="img-fluid">
-                <figcaption class="d-flex align-items-center justify-content-center">
-                    <h2>Morning</h2>
-                    <a href="#">View more</a>
-                </figcaption>                    
-            </figure>
-            <div class="d-flex justify-content-between tm-text-gray">
-                <span class="tm-text-gray-light">26 Sep 2020</span>
-                <span>16,008 views</span>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-            <figure class="effect-ming tm-video-item">
-                <img src="img/img-06.jpg" alt="Image" class="img-fluid">
-                <figcaption class="d-flex align-items-center justify-content-center">
-                    <h2>Pinky</h2>
-                    <a href="#">View more</a>
-                </figcaption>                    
-            </figure>
-            <div class="d-flex justify-content-between tm-text-gray">
-                <span class="tm-text-gray-light">22 Sep 2020</span>
-                <span>12,860 views</span>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-            <figure class="effect-ming tm-video-item">
-                <img src="img/img-07.jpg" alt="Image" class="img-fluid">
-                <figcaption class="d-flex align-items-center justify-content-center">
-                    <h2>Bus</h2>
-                    <a href="#">View more</a>
-                </figcaption>                    
-            </figure>
-            <div class="d-flex justify-content-between tm-text-gray">
-                <span class="tm-text-gray-light">12 Sep 2020</span>
-                <span>10,900 views</span>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-            <figure class="effect-ming tm-video-item">
-                <img src="img/img-08.jpg" alt="Image" class="img-fluid">
-                <figcaption class="d-flex align-items-center justify-content-center">
-                    <h2>New York</h2>
-                    <a href="#">View more</a>
-                </figcaption>                    
-            </figure>
-            <div class="d-flex justify-content-between tm-text-gray">
-                <span class="tm-text-gray-light">4 Sep 2020</span>
-                <span>11,300 views</span>
-            </div>
-        </div>        
-    </div> <!-- row --> --}}
+
+        <div class="row mb-3 tm-gallery">
+            @foreach ($posts as $item)
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5" style="width: 15%;">
+                    <figure class="effect-ming tm-video-item">
+                        <img src="{{ asset($item->image) }}" alt="Image" class="img-fluid">
+                        <figcaption class="d-flex align-items-center justify-content-center">
+
+                            <a href="/post-detail/{{ $item->id }}">View more</a>
+                        </figcaption>
+                    </figure>
+                    <div class="d-flex justify-content-between tm-text-gray">
+                        <span class="tm-text-gray-light">{{ $item->created_at }}</span>
+                        <b>{{ $item->user->name }}</b>
+                    </div>
+                </div>
+            @endforeach
+
+
+        </div> <!-- row -->
     </div> <!-- container-fluid, tm-container-content -->
 @endsection

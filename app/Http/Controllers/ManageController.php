@@ -38,4 +38,20 @@ class ManageController extends Controller
         $user->update();
         return redirect()->back();
     }
+    public function chuyenDoiAdmin($id)
+    {
+        $user = user::find($id);
+
+        $user->role = 1;
+        $user->update();
+        return redirect()->back();
+    }
+    public function chuyenDoiUser($id)
+    {
+        $user = user::find($id);
+
+        $user->role = 0;
+        $user->update();
+        return redirect()->back();
+    }
 }
