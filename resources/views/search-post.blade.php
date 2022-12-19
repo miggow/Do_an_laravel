@@ -1,9 +1,9 @@
 @extends('layout')
 @section('find')
 <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="img/Pixel-Cover.jpeg">
-    <form class="d-flex tm-search-form" method="GET" action="{{ route('search') }}">
+    <form class="d-flex tm-search-form">
         
-        <input class="form-control tm-search-input" name="search" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control tm-search-input" type="search" placeholder="Search" aria-label="Search" name="search">
         <button class="btn btn-outline-success tm-search-btn" type="submit">
             <i class="fas fa-search"></i>
         </button>
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="row tm-mb-90 tm-gallery">
-        @foreach ($post as $post)
+        {{-- @foreach ($posts as $post)
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
             <figure class="effect-ming tm-video-item">
                 <img src="{{ asset($post->image) }}" alt="Image" class="img-fluid"  >
@@ -34,10 +34,27 @@
             </figure>
             <div class="d-flex justify-content-between tm-text-gray">
                 <span class="tm-text-gray-light">{{ $post->created_at }}</span>
-                
+                <b>{{ $post->user->name }}</b>
             </div>
         </div>
-        @endforeach
+        @endforeach --}}
+        @forelse ($posts as $post)
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+            <figure class="effect-ming tm-video-item">
+                <img src="{{ asset($post->image) }}" alt="Image" class="img-fluid"  >
+                <figcaption class="d-flex align-items-center justify-content-center">
+                    <h2>Read More>></h2>
+                    <a href="/post-detail/{{ $post->id }}">View more</a>
+                </figcaption>                    
+            </figure>
+            <div class="d-flex justify-content-between tm-text-gray">
+                <span class="tm-text-gray-light">{{ $post->created_at }}</span>
+                <b>{{ $post->user->name }}</b>
+            </div>
+        </div>
+        @empty
+            <h1>Không tìm thấy kết quả bạn mong muốn</h1>
+        @endforelse
         
                
     </div> <!-- row -->

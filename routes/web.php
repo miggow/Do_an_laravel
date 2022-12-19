@@ -29,7 +29,7 @@ Route::post('/create-post', [PostController::class, 'store'])->name('store')->mi
 Route::get('/edit/{id}', [PostController::class, 'edit'])->name('edit')->middleware('auth');
 Route::put('/update/{id}', [PostController::class, 'update'])->name('update')->middleware('auth');
 Route::get('/delete/{id}', [PostController::class, 'remove'])->name('delete')->middleware('auth');
-
+Route::get('/search',[PostController::class,'search'])->name('search')->middleware('auth');
   
 
 //comment

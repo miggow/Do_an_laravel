@@ -73,4 +73,11 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('home');
     }
+    public function search(Request $request)
+    {
+        $search_text = $_GET['search'];
+        $posts = Post::where('title','like','%'.$request->search.'%')->get();
+
+        return view('search-post',compact('posts'));
+    }
 }
