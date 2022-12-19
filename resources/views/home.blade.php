@@ -34,7 +34,7 @@
             </figure>
             <div class="d-flex justify-content-between tm-text-gray">
                 <span class="tm-text-gray-light">{{ $post->created_at }}</span>
-                
+                <b>{{ $post->user->name }}</b>
             </div>
         </div>
         @endforeach

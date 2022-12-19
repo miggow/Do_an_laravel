@@ -25,6 +25,7 @@
                                 <th>Tạo lúc</th>
                                 <th>Chức năng</th>
                                 <th>chức vụ</th>
+                                <th>Trạng thái</th>
                             </tr>
                         </thead>
                         @foreach ($user as $user)
@@ -36,14 +37,25 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>
-                                    <button >Edit</button>
-                                    <button class="delete">Delete</button>
+                                    <a href="{{ route('open.user', $user->id) }}"><input class="btn btn-primary"
+                                        type="submit" value="Mở tài khoản"></a>
+                                        <hr>
+                                    <a href="{{ route('block.user', $user->id) }}"><input class="btn btn-danger"
+                                        type="submit" value="Khóa tài khoản"></a>
+                                    
                                 </td>
                                 <td>
                                     @if ($user->role == '1')
                                         Admin
                                     @else
                                         Người dùng
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($user->status == '0')
+                                        Hoạt động
+                                    @else
+                                        Ngưng hoạt động
                                     @endif
                                 </td>
                             </tr>

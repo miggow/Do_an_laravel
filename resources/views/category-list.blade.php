@@ -30,7 +30,7 @@
                                 <form action="{{ route('category.delete', $category) }}" >
                                     
                        
-                                    <input class="btn btn-warning" type="submit" value="Delete">
+                                    <input class="btn btn-danger" type="submit" value="Delete">
                                 </form>
                             </td>
                         </tr>

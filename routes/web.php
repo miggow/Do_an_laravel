@@ -48,11 +48,12 @@ Route::get('/edit-profile/{id}', [ProfileController::class, 'edit'])->name('edit
 Route::put('/update-profile/{id}', [ProfileController::class, 'update'])->name('update-profile')->middleware('auth');
 
 
-
+//Admin
 Route::get('/dashboard',[ManageController::class,'index'])->middleware('auth','isAdmin');
 Route::get('/dashboard/user-manage',[ManageController::class, 'indexUser'])->name('index-user')->middleware('auth','isAdmin');
 Route::get('/dashboard/post-manage',[ManageController::class, 'indexPost'])->name('index-post')->middleware('auth','isAdmin');
-
+Route::get('/dashboard/block/{id}',[ManageController::class,'blockUser'])->name('block.user')->middleware('auth','isAdmin');
+Route::get('/dashboard/open/{id}',[ManageController::class,'openUser'])->name('open.user')->middleware('auth','isAdmin');
 
 Route::get('/categories',[CategoryController::class,'index'])->name('category.index')->middleware('auth','isAdmin');
 Route::get('/categories/create-post', [CategoryController::class, 'create'])->name('category.create');

@@ -22,4 +22,20 @@ class ManageController extends Controller
         $post = Post::all();
         return view('Admin.post-manage',compact('post'));
     }
+    public function blockUser($id)
+    {
+        $user = user::find($id);
+
+        $user->status = 1;
+        $user->update();
+        return redirect()->back();
+    }
+    public function openUser($id)
+    {
+        $user = user::find($id);
+
+        $user->status = 0;
+        $user->update();
+        return redirect()->back();
+    }
 }

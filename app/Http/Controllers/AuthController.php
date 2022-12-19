@@ -18,7 +18,7 @@ class AuthController extends Controller
     {
         // dd($request->input());  
         
-        if(Auth::attempt([ "email" => $request->email, "password" => $request->password]))
+        if(Auth::attempt([ "email" => $request->email, "password" => $request->password, 'status'=>0]))
         {
             return redirect()->route('home');
         }
