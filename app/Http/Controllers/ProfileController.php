@@ -34,6 +34,6 @@ class ProfileController extends Controller
         $user->image = 'storage/' . $request->file('image')->store('img', 'public');
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect()->route('profile');
+        return redirect()->route('profile')->with('success','Cập nhập tài khoản thành công');
     }
 }

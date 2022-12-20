@@ -2,24 +2,27 @@
 @section('main')
     <section style="background-color: #eee;">
         <div class="container py-5">
-           
+
 
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="{{ asset(Auth::user()->image) }}"
-                                alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            <img src="{{ asset(Auth::user()->image) }}" alt="avatar" class="rounded-circle img-fluid"
+                                style="width: 150px;">
                             <h5 class="my-3">{{ Auth::user()->name }}</h5>
-                            
-                            
+
+
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
+                            @if (session('success'))
+            <h1 style="text-align: center; color: rgb(24, 104, 24)">cập nhật thành công</h1>
+        @endif
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Full Name</p>
@@ -47,11 +50,11 @@
                                 </div>
                             </div>
                             <hr>
-                    
+
                             <a href="{{ route('edit-profile', Auth::user()->id) }}" style="font-size: 30px;">Edit</a>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
