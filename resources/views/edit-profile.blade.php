@@ -61,6 +61,9 @@
                                     <div class="col-sm-9">
                                         <input onfocus="this.value=''" class="form-control" type="password" name="password"
                                             value="{{ Auth::user()->password }}">
+                                            @error('password')
+                                            <h5 style="color: red;">{{ $message }}</h5>
+                                        @enderror
                                     </div>
                                 </div>
                                 <hr>
@@ -70,6 +73,9 @@
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label"></label>
                                     <input class="form-control" type="file" id="image" name="image" value="{{ Auth::user()->image }}">
+                                @error('image')
+                                    <h5 style="color: red;">{{ $message }}</h5>
+                                @enderror
                                 </div>
                                 <button type="submit" class="btn btn-primary">Lưu</button>
                             </form>

@@ -68,7 +68,7 @@ Route::get('/categories/delete/{id}', [CategoryController::class, 'destroy'])->n
 
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'doLogin'])->name('do-login');
+Route::post('/login', [AuthController::class, 'doLogin'])->name('doLogin');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'doRegister'])->name('do-register');
+Route::post('/register', [AuthController::class, 'doRegister'])->name('doRegister');
 Route::get('/logout', [AuthController::class, 'doLogout'])->name('logout');

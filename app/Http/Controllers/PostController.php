@@ -17,8 +17,7 @@ class PostController extends Controller
         return view('home', compact('post'));
     }
     public function create()
-    {
-        
+    {       
         $category = Category::all();
         return view('create-post', compact('category'));
     }
@@ -27,7 +26,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image',
         ]);
 
 
@@ -61,6 +60,14 @@ class PostController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'required|image',
+        ]);
+
+        //post -> title, content, img 
+        //Post::find
         $post = Post::find($id);
 
         $post->title = $request->input('title');
@@ -80,7 +87,7 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $search_text = $_GET['search'];
-        $posts = Post::where('title','like','%'.$request->search.'%')->get();
+        $posts = Post::where('title','like','%'.$request->search.'%')->orWhere('category_id','like','%'.$request->search.'%')->get();
 
         return view('search-post',compact('posts'));
     }

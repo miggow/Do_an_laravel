@@ -11,7 +11,7 @@
 
 <body>
     <!-- partial:index.partial.html -->
-    <form class="login" action="{{ route('login') }}"  method="POST">
+    <form class="login" action="{{ route('doLogin') }}"  method="POST">
         @csrf
         @if (session('success'))
             <h1 style="text-align: center; color: rgb(24, 104, 24)">Đăng ký thành công</h1>

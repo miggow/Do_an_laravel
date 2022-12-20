@@ -15,7 +15,7 @@
         <div class="mb-3">
             <label for="content" class="form-label">Loại đồ vật</label>
             <select style="width: 60%;" name="category_id" id="">
-                <option selected disabled >Chọn loại danh mục</option>
+                <option selected disabled>Chọn loại danh mục</option>
                 @foreach ($category as $category)
                     <option value="2">{{ $category->name }}</option>
                 @endforeach
@@ -25,6 +25,10 @@
             <div class="mb-3">
                 <label for="formFile" class="form-label">Hình ảnh chi tiết</label>
                 <input class="form-control" type="file" id="image" name="image">
+                @error('image')
+
+                    <strong style="color: red;">{{ $message }}</strong>
+                @enderror
             </div>
         </div>
         <button type="submit">Đăng bài</button>

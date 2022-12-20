@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
+    
     public function show($id)
     {
         $user = Auth::user();
@@ -21,6 +22,11 @@ class ProfileController extends Controller
     }
     public function update(Request $request)
     {
+        $request->validate([
+            'name' =>'required',
+            'password'=>'required',
+            'image' => 'required|image'
+        ]);
         $user = User::find(Auth::user()->id);
 
         $user->name = $request->name;

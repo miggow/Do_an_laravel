@@ -11,7 +11,7 @@
 
 <body>
     <!-- partial:index.partial.html -->
-    <form class="login" action="{{ route('register') }}" method="POST">
+    <form class="login" action="{{ route('doRegister') }}" method="POST">
         @csrf
         <h1 style="text-align: center; ">Đăng ký tài khoản</h1>
         <input type="text" name="name" placeholder="Họ và tên">
@@ -38,7 +38,7 @@
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
-        <button><a href="{{ route('register') }}">Đăng ký</a></button>
+        <button><a href="{{ route('doRegister') }}">Đăng ký</a></button>
         <h4>Bạn đã có tài khoản ? <a href="{{ route('login') }}" style="color: rgba(29, 161, 238, 0.753);"> Đăng
                 nhập</a></h4>
 

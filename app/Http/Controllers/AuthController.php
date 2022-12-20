@@ -32,12 +32,7 @@ class AuthController extends Controller
     public function doRegister(Request $request)
     {
         // dd($request->input());
-        $request->validate([
-            'name' => 'required',
-            'phone' => 'required | number',
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        
         User::create([
             'name' => $request->name,
             'phone' => $request->phone,
