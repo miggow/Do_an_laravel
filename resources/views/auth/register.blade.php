@@ -38,7 +38,7 @@
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
-        <button><a href="{{ route('doRegister') }}">Đăng ký</a></button>
+        <button type="submit">Đăng ký</button>
         <h4>Bạn đã có tài khoản ? <a href="{{ route('login') }}" style="color: rgba(29, 161, 238, 0.753);"> Đăng
                 nhập</a></h4>
 
